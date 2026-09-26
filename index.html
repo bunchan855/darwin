@@ -1,0 +1,1542 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DARWIN｜SNS運用・Web制作・内製化支援</title>
+<meta name="description" content="D-winのマーケティング支援事業「DARWIN」。SNSの運用代行、Webサイト・広告、社内で回せる体制づくりまで。再生数ではなく、売上が動くところまでやり切ります。">
+
+<!-- ============================================================================
+     公開用のヘッダ情報
+
+     ★ドメインを変えるときは、この下の URL に出てくる https://bunchan855.github.io/darwin を
+       置き換えるだけでよい（canonical / OGP / 構造化データの3箇所）。
+
+     ここに入れているもの:
+       canonical … 同じページが別URLでも開けるとき、検索エンジンにどれが正か教える
+       OGP       … LINE・Slack・X などにURLを貼ったときに出るカードの中身
+       favicon   … タブのアイコン。SVGを主にして、古い環境にはPNGを渡す
+       構造化データ… 検索結果に会社情報やFAQが出やすくなる
+     ========================================================================= -->
+<link rel="canonical" href="https://bunchan855.github.io/darwin/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0b0b0c">
+<meta name="format-detection" content="telephone=no">
+
+<!-- SNSに貼られたときのカード -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DARWIN">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://bunchan855.github.io/darwin/">
+<meta property="og:title" content="DARWIN｜SNS運用・Web制作・内製化支援">
+<meta property="og:description" content="D-winのマーケティング支援事業「DARWIN」。SNSの運用代行、Webサイト・広告、社内で回せる体制づくりまで。再生数ではなく、売上が動くところまでやり切ります。">
+<meta property="og:image" content="https://bunchan855.github.io/darwin/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DARWIN｜事業の真価を、進化させる。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DARWIN｜SNS運用・Web制作・内製化支援">
+<meta name="twitter:description" content="D-winのマーケティング支援事業「DARWIN」。SNSの運用代行、Webサイト・広告、社内で回せる体制づくりまで。再生数ではなく、売上が動くところまでやり切ります。">
+<meta name="twitter:image" content="https://bunchan855.github.io/darwin/assets/ogp.jpg">
+
+<!-- タブのアイコン -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Webフォントの読み込み。
+
+     ・Archivo は 900（と斜体900）しか使っていないので、600/800/800斜体は読み込まない
+     ・media="print" で読み込み、読み終わってから media="all" に切り替える
+       → 「印刷用の指定」として扱われる間はページの描画を止めないので、
+          文字が出るまでの待ち時間が無くなる。読み込み後に本来の書体へ差し替わる。
+     ・JavaScriptが無い環境では onload が動かないので、noscript で普通に読む -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,900;1,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,900;1,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,900;1,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"></noscript>
+<style>
+/* ============================================================================
+   DARWIN LP — 構成を作り直した版
+
+   【なぜ作り直したか】
+   前の版は「①社名の由来 → ②哲学 → ③サービス」の順で、
+   訪問者は約4,000pxスクロールしないと何を売っている会社か分からなかった。
+   しかもその間ずっとこちらの理念を聞かされる作りだった。
+
+   BtoB LP の定石（ニジボックス）は
+     ①FV＝商材の概要 → ②課題・悩み → ③特徴 → ④実績 → ⑤導入フロー・料金 → ⑥クロージング
+   参考記事の一番の指摘は「ユーザーに考えさせない」。
+
+   そこで「相手の関心の順に上がっていく」構造に組み替えた:
+     1 FV（何屋か）→ 2 できること → 3 課題 → 4 進め方 → 5 なぜ効くか
+     → 6 料金 → 7 FAQ → 8 問い合わせ
+   ※実績は定石では④に入るが、載せられる事実が揃うまで置かない。
+     「集計中」を並べるより、無いほうが不安を与えない（改善提案の判断を踏襲）。
+
+   ブランドの世界観（進化の絵・狼）は捨てず、置き場所を変えただけ。
+   FVの扉と「なぜ効くか」に集約している。
+   ========================================================================= */
+
+:root{
+  --ink:#0b0b0c; --ink-soft:#4a4a50; --ink-faint:#84817b;
+  --paper:#ffffff; --paper-shade:#f5f4f1;
+  --amber:#a8761a; --amber-soft:#d9a03c;
+  /* 明るい地の「文字」に使う金。--amber(#a8761a)は白地で3.98:1しかなく、
+     小さい文字に必要な4.5:1に届かない。文字用だけ暗くした色を別に持つ。
+     線・枠・下線などの装飾は3:1で足りるので --amber のままでよい。 */
+  --amber-ink:#8a5f10;
+  --line:#e4e1db; --line-dark:#2a2a2e;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --gut:clamp(20px,4vw,30px);
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--font-body); font-feature-settings:"palt" 1;
+  line-height:1.85; -webkit-font-smoothing:antialiased;
+  /* 横はみ出しを止める指定。
+     body に overflow-x:hidden を書くと、body 自体がスクロール容器になってしまい、
+     window.scrollTo（＝ナビの #アンカー移動）が効かなくなることがある。
+     clip は「はみ出しは切るが、スクロール容器は作らない」ので副作用が出ない。
+     clip 未対応のブラウザ向けに hidden を先に書いて上書きさせる。 */
+  overflow-x:hidden; overflow-x:clip;
+}
+img{
+  max-width:100%; display:block;
+  /* ★height:auto は必須。
+     img に width/height 属性（例 width="1760" height="1004"）を書くと、
+     ブラウザはその高さを「実際の高さ」として使ってしまう。
+     CSSで幅だけ指定していると、幅は520pxなのに高さは1004pxのまま＝縦に伸びる。
+     height:auto を入れると、属性は「縦横比のヒント」としてだけ使われ、
+     場所は先に確保しつつ、比率は正しく保たれる。 */
+  height:auto;
+}
+a{ color:inherit; }
+.wrap{ max-width:1120px; margin:0 auto; padding:0 var(--gut); }
+section{ position:relative; scroll-margin-top:66px; }
+.light{ padding:clamp(76px,9vw,118px) 0; }
+.dark{ background:var(--ink); color:var(--paper); padding:clamp(84px,10vw,130px) 0; }
+.shade{ background:var(--paper-shade); }
+
+/* 斜めの分断。ロゴの「結晶の破片」と同じ角度感。使うのは要所だけに絞る */
+.slash-bottom{ clip-path:polygon(0 0, 100% 0, 100% calc(100% - 2.6vw), 0 100%); }
+.slash-top{ clip-path:polygon(0 2.6vw, 100% 0, 100% 100%, 0 100%); }
+/* 上下とも斜めにしたいとき用。
+   clip-path は1要素に1つしか持てないので、slash-top と slash-bottom を
+   両方付けても後に書いたほうだけが残り、片方は無かったことになる。
+   両方を1つの多角形として書く。 */
+.slash-both{ clip-path:polygon(0 2.6vw, 100% 0, 100% calc(100% - 2.6vw), 0 100%); }
+
+/* ---------- 見出しまわり ---------- */
+.eyebrow{
+  /* 等幅フォントをやめ、本文と同じ書体で組む。
+     頭に細い罫を一本引くのは日本語の会社サイトでよくある型で、
+     「01 ／ ISSUES」のような番号＋英大文字より落ち着いて見える。 */
+  font-size:12.5px; font-weight:700;
+  letter-spacing:.08em; color:var(--amber-ink); margin:0 0 14px;
+  display:flex; align-items:center; gap:11px;
+}
+.eyebrow::before{
+  content:""; width:26px; height:1px; background:currentColor; flex:none; opacity:.65;
+}
+.dark .eyebrow{ color:var(--amber-soft); }
+h2{
+  font-size:clamp(25px,4.4vw,44px); font-weight:900; line-height:1.3;
+  letter-spacing:.005em; margin:0 0 18px; text-wrap:balance;
+}
+.lede{ max-width:60ch; color:var(--ink-soft); font-size:15.5px; margin:0 0 40px; }
+/* 日本語を文節（意味の切れ目）で改行させる。
+   これが無いと「まず現状を見せてくださ／い。」のように、文末の1〜2文字だけが
+   次の行に落ちて見苦しくなる。auto-phrase はブラウザが日本語の文節を判定して
+   そこで折り返してくれる指定。
+   未対応のブラウザでは無視されて従来どおりの改行になるだけなので、入れて損はない。
+   ※本文（長い段落）には掛けない。行がガタつくため。短い文だけに使う。 */
+h2, h3, .lede, .cta-end .txt p, .faq summary, .pain .q, .hero-what, .fb-main h3{
+  word-break:auto-phrase;
+}
+
+/* 語の途中で改行させないための指定。
+   inline-block にすると、その塊は途中で割れずに丸ごと次の行へ送られる。
+   h2 にも同じ書き方をしていたのに、h2 span への指定が無く効いていなかった。 */
+.lede span, h2 span, .hero-what span{ display:inline-block; }
+.dark .lede{ color:#b4b1ab; }
+
+.specbar{
+  border-block:1px solid var(--line);
+  font-size:10px; letter-spacing:.06em; color:var(--ink-faint);
+  display:flex; gap:20px; flex-wrap:wrap; padding:8px 0;
+}
+.dark .specbar{ border-color:var(--line-dark); color:#8b8882; }
+.specbar b{ color:var(--ink); font-weight:500; }
+.dark .specbar b{ color:#e9e7e2; }
+
+/* ---------- ボタン。主＝塗り＋金の下線／副＝枠線だけ ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:10px; font-size:15px;
+  font-weight:700; padding:16px 30px; text-decoration:none;
+  border:1px solid transparent; transition:transform .15s, background .15s;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+.btn .ar{ font-family:var(--font-display); font-style:italic; }
+.btn-primary{ background:var(--ink); color:var(--paper); border-bottom:3px solid var(--amber); }
+.btn-primary:hover{ background:#25252a; }
+.dark .btn-primary, #hero .btn-primary{ background:var(--paper); color:var(--ink); border-bottom-color:var(--amber); }
+.dark .btn-primary:hover, #hero .btn-primary:hover{ background:#e9e7e2; }
+.btn-ghost{ background:transparent; color:var(--ink-soft); border:1px solid var(--line); font-weight:500; }
+.btn-ghost:hover{ color:var(--ink); border-color:var(--ink); }
+.dark .btn-ghost, #hero .btn-ghost{ color:#c8c5bf; border-color:#3a3a40; }
+.dark .btn-ghost:hover, #hero .btn-ghost:hover{ color:#fff; border-color:#6a6a72; }
+
+/* CTAは「線の下に文字とボタン」ではなく、面で受ける。
+   押す直前の不安（金がかかる？売り込まれる？）を消す一言を必ず添える。 */
+.cta-end{
+  margin-top:clamp(40px,5vw,60px);
+  background:var(--paper-shade); border-left:3px solid var(--amber);
+  padding:clamp(22px,3vw,30px) clamp(20px,3vw,30px);
+  display:flex; flex-wrap:wrap; align-items:center; gap:16px 26px;
+}
+.dark .cta-end{ background:#141418; border-left-color:var(--amber-soft); }
+.cta-end .txt{ flex:1 1 280px; }
+.cta-end .txt p{ margin:0; font-size:15px; font-weight:700; color:var(--ink); }
+.dark .cta-end .txt p{ color:#fff; }
+/* 安心材料。ボタンのすぐ横に置くのが効く */
+.cta-end .txt small{
+  display:block; margin-top:6px; font-size:12.5px; font-weight:400;
+  /* 押す直前の不安を消す一文。--ink-faint(#84817b)だと地の #f5f4f1 上で3.53:1しかなく、
+     12.5pxの通常ウェイトに必要な4.5:1に届かない。ここだけ濃くする（6.28:1）。 */
+  color:#5f5c56;
+}
+.dark .cta-end .txt small{ color:#8b8882; }
+.cta-end .btn{ flex:0 0 auto; }
+
+/* ============================================================================
+   ヘッダー。ロゴは最初から出す。
+   前の版はFVを過ぎるまでヘッダーごと隠していたので、
+   「どこの会社のサイトか分からない」状態が最初の1画面で起きていた。
+   ========================================================================= */
+.siteheader{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  padding:12px 0; transition:background .25s, border-color .25s;
+  border-bottom:1px solid transparent;
+}
+.siteheader .row{ display:flex; align-items:center; gap:22px; }
+.siteheader .logo{ display:flex; align-items:center; text-decoration:none; flex:0 0 auto; }
+.siteheader .logo img{
+    /* 案03のマークは横長（約2:1）。幅で決めると高さがばらつくので高さで揃える */
+    height:30px; width:auto;
+  }
+.siteheader .logo .light-mark{ display:none; }
+.siteheader .nav{ display:flex; gap:18px; flex:1; }
+.siteheader .nav a{ font-size:13px; font-weight:500; color:#c8c5bf; text-decoration:none; white-space:nowrap; }
+.siteheader .nav a:hover{ color:#fff; }
+.siteheader .hdr-cta{ padding:9px 18px; font-size:13px; flex:0 0 auto;
+  background:transparent; color:#fff; border:1px solid rgba(255,255,255,.45); }
+.siteheader .hdr-cta:hover{ background:#fff; color:var(--ink); }
+/* FVを過ぎたら白い帯に切り替える（背景が白いセクションに入るため） */
+.siteheader.solid{
+  background:rgba(255,255,255,.95); backdrop-filter:saturate(180%) blur(12px);
+  border-bottom-color:var(--line);
+}
+.siteheader.solid .logo .dark-mark{ display:none; }
+.siteheader.solid .logo .light-mark{ display:block; }
+.siteheader.solid .nav a{ color:var(--ink-soft); }
+.siteheader.solid .nav a:hover{ color:var(--ink); }
+.siteheader.solid .hdr-cta{ background:var(--ink); color:#fff; border-color:var(--ink); border-bottom:3px solid var(--amber); }
+@media(max-width:900px){
+  .siteheader .nav, .siteheader .hdr-cta{ display:none; }
+  .siteheader .row{ justify-content:space-between; }
+}
+
+
+/* ============================================================================
+   扉（イントロ）— 左から線が引かれ、その上にロゴが形になる
+
+   【物語】約2.4秒。静か。叫ばない。
+     0.0-0.75s  左から黒い線が引かれていく
+     0.35-1.7s  線を追うように、ロゴが左から右へ形になっていく
+                （このロゴは 猿→人→ビジネスマン→D→狼 の順に並んでいるので、
+                  左から現れると「進化してロゴになる」がそのまま絵になる）
+     1.7-2.1s   完成して静止
+     2.1-2.5s   静かに消えてサイトが現れる
+
+   【なぜ動画をやめたか】
+     ・全画面に敷くと引き伸ばしで粗が出た（1280pxを約3000px相当に拡大していた）
+     ・咆哮と爆発は強すぎて、開く前から疲れる
+     線とマスクで組めば、拡大しても粗が出ず、file も数KBで済む。
+     動きも1フレーム単位で決められる。
+
+   ★安全設計（現行LPが踏んだ地雷を繰り返さない）
+     1. 既定は display:none。JSが .on を付けたときだけ出る
+     2. タイマーで必ず閉じる
+     3. SKIP／クリック／キーのどれでも閉じる
+     4. 1セッション1回だけ
+     5. 本編の透明度には一切さわらない
+   ========================================================================= */
+.intro{ display:none; }
+.intro.on{
+  display:flex; position:fixed; inset:0; z-index:200;
+  align-items:center; justify-content:center;
+  background:#ffffff; overflow:hidden;
+  animation:introOut .42s ease 2.12s forwards;
+}
+@keyframes introOut{ to{ opacity:0; visibility:hidden } }
+
+/* 舞台。画面いっぱいには広げない。余白を残したほうが静かに見える。 */
+.intro .stage{
+  position:relative; width:min(720px,74vw);
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* 左から引かれる線。ロゴの足元に敷く */
+.intro .line{
+  position:absolute; left:0; bottom:5.3%; height:2px; background:var(--ink);
+  width:0; animation:lineDraw .78s cubic-bezier(.22,.7,.25,1) forwards;
+}
+@keyframes lineDraw{ to{ width:100% } }
+
+/* ロゴが左から右へ形になる。
+   マスク（見える範囲を決めるグラデーション）を右から左へ動かす。
+   マスクを要素より大きく取ると、境目がぼけたまま滑らかに舐めていく。 */
+.intro .mark{
+  width:100%; height:auto; position:relative;
+  -webkit-mask-image:linear-gradient(90deg,#000 0 34%,transparent 52%);
+          mask-image:linear-gradient(90deg,#000 0 34%,transparent 52%);
+  -webkit-mask-size:250% 100%;  mask-size:250% 100%;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:100% 0;  mask-position:100% 0;
+  animation:markSweep 1.35s cubic-bezier(.3,.05,.2,1) .35s forwards;
+}
+@keyframes markSweep{
+  from{ -webkit-mask-position:100% 0; mask-position:100% 0 }
+  to  { -webkit-mask-position:0% 0;   mask-position:0% 0 }
+}
+
+.intro .skip{
+  position:absolute; right:20px; top:18px; z-index:3;
+  font-size:11px; letter-spacing:.1em;
+  color:#8b8882; background:none; border:1px solid #ddd9d2; padding:8px 14px; cursor:pointer;
+}
+.intro .skip:hover{ color:var(--ink); border-color:var(--ink); }
+.intro .skip:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+
+/* ============================================================================
+   1. ファーストビュー — 扉。ただし「何屋か」はここで言い切る
+   ========================================================================= */
+#hero{
+  min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+  padding:110px 0 54px; position:relative; overflow:hidden;
+  background:var(--ink); color:var(--paper);
+}
+.hero-media{ position:absolute; inset:0; overflow:hidden; }
+.hero-media img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+  /* 縦長の画面では16:9の写真の真ん中しか映らない。
+     どのカットも主役がやや右寄りなので、切り取りを右に寄せて拾う。 */
+  object-position:58% center;
+  /* カラーのまま。ただし沈めすぎない。
+     背景を流す目的は「農業も建設も店舗もやっている」と分からせること。
+     何が写っているか読めないところまで暗くしたら、流す意味がなくなる。 */
+  filter:saturate(.95) contrast(1.02) brightness(.62);
+}
+
+/* ---------- FV背景のスライドショー ----------
+   何を伝えたいか：支援先がIT企業に限らない、ということ。
+   農業・建設・店舗・つくり手…と業種の違う現場を流せば、
+   文章を足さずに「いろんなところをやっている」が伝わる。
+
+   ★CSSだけで組む理由
+     JSでスライドを回すと、JSが落ちた瞬間に背景が1枚で固定される……
+     ならまだいいが、実装によっては全部消える。
+     CSSアニメーションなら、最悪でも「動かないが1枚は見えている」で済む。
+     このサイトは「動かなくても壊れない」を全部の機能で守っている。
+
+   ★仕組み
+     5枚を重ねて置き、それぞれ 3.4秒ずつ遅らせて同じアニメを回す。
+     1周 = 3.4秒 × 5枚 = 17秒。
+     各スライドは自分の持ち時間（＝全体の20%）だけ不透明になる。
+       0%→4%   ふわっと出る（約0.7秒）
+       4%→20%  出たまま
+       20%→24% ふわっと消える
+     消えかけと次の出かけが重なるので、切り替わりが柔らかく見える。 */
+/* 動くのは、2枚目以降の読み込みをJSが済ませて .ready を付けてから。
+   JSが動かなければ1枚目が静止したまま＝写真は必ず1枚見えるので破綻しない。 */
+.hero-media.ready img{
+  opacity:0;
+  animation:heroFade 17s linear infinite, heroDrift 17s ease-in-out infinite;
+  animation-delay:calc(var(--i) * 3.4s);
+}
+/* 1枚目だけは、アニメが効かない環境でも必ず見えるようにしておく */
+.hero-media img:first-child{ opacity:1; }
+.hero-media.ready img:first-child{ animation-delay:0s; }
+
+@keyframes heroFade{
+  0%   { opacity:0 }
+  4%   { opacity:1 }
+  20%  { opacity:1 }
+  24%  { opacity:0 }
+  100% { opacity:0 }
+}
+/* ゆっくり寄る動き。止まった写真より「流れている」感じが出る。
+   24%以降は透明なので、そこで元の倍率に戻しても見えない。 */
+@keyframes heroDrift{
+  0%   { transform:scale(1.085) }
+  24%  { transform:scale(1.005) }
+  25%  { transform:scale(1.085) }
+  100% { transform:scale(1.085) }
+}
+/* 動きを減らす設定の人には、1枚目を出したまま止める */
+@media (prefers-reduced-motion: reduce){
+  .hero-media.ready img{ animation:none; opacity:0; }
+  .hero-media img:first-child{ opacity:1; }
+}
+.hero-scrim{
+  position:absolute; inset:0;
+  /* 暗幕を2枚重ねる。
+     1枚目（横方向）… 見出しが載る左側だけを濃く落とす。
+       全面を均一に暗くすると写真が読めなくなるので、
+       「文字のある所だけ暗く、写真を見せたい右側は薄く」にする。
+     2枚目（縦方向）… 上はヘッダー、下は進化のイラストを載せるので、
+       その2箇所だけ締める。真ん中は抜く。 */
+  background:
+    linear-gradient(90deg,
+      rgba(11,11,12,.95) 0%, rgba(11,11,12,.88) 34%,
+      rgba(11,11,12,.58) 66%, rgba(11,11,12,.44) 100%),
+    linear-gradient(180deg,
+      rgba(11,11,12,.80) 0%, rgba(11,11,12,0) 24%,
+      rgba(11,11,12,0) 58%, rgba(11,11,12,.88) 100%);
+}
+/* スマホは見出しが画面いっぱいに広がるので、左だけ濃い形だと文字が読めない。
+   縦方向の暗幕に切り替える。 */
+@media(max-width:760px){
+  .hero-scrim{
+    background:linear-gradient(180deg,
+      rgba(11,11,12,.90) 0%, rgba(11,11,12,.80) 40%,
+      rgba(11,11,12,.86) 72%, rgba(11,11,12,.94) 100%);
+  }
+}
+.hero-inner{ position:relative; }
+.hero-copy{
+  font-size:clamp(31px,6.2vw,66px); font-weight:900;
+  line-height:1.2; letter-spacing:.004em; margin:0 0 clamp(16px,2.4vw,24px);
+  color:var(--paper); text-wrap:balance;
+}
+/* 「何屋か」を言い切る一行。FVで一番読ませたい実務情報 */
+.hero-what{
+  font-size:clamp(15px,2vw,18px); font-weight:500; color:#dcd9d3;
+  max-width:48ch; margin:0 0 clamp(22px,3vw,30px); line-height:1.9;
+}
+.hero-what b{ color:#fff; font-weight:700; }
+/* 意味のまとまりごとに改行させる。
+   inline-block にすると、その箱の中では折り返さず、箱と箱の間で改行する。
+   日本語で「語の途中で切れる」を防ぐ、いちばん確実なやり方。 */
+.hero-what span{ display:inline-block; }
+/* 3つの領域をFVで先に見せる。BtoBの定石「機能は3〜6つに絞って提示」 */
+.hero-chips{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 clamp(24px,3.2vw,32px); }
+.hero-chips span{
+  font-size:12px; letter-spacing:.02em;
+  border:1px solid rgba(255,255,255,.3); color:#e4e1db; padding:6px 13px;
+}
+.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+.hero-evo{ width:min(520px,74%); margin:clamp(28px,3.6vw,40px) 0 0; opacity:.88; }
+#hero .specbar{ margin-top:clamp(22px,3vw,34px); border-color:#2a2a2e; color:#8b8882; }
+#hero .specbar b{ color:#e9e7e2; }
+#hero .eyebrow{ color:var(--amber-soft); }
+
+/* コピーの入れ替え。同じ1マスに重ねるので前後の文字が動かない */
+.swap{ display:inline-grid; vertical-align:baseline; color:var(--amber-soft); }
+.swap > span{ grid-area:1/1; white-space:nowrap; align-self:end; animation:swapFade 6s infinite; }
+.swap > span:nth-child(2){ animation-delay:-3s; }
+@keyframes swapFade{ 0%{opacity:1} 42%{opacity:1} 50%{opacity:0} 92%{opacity:0} 100%{opacity:1} }
+
+
+/* 対応範囲のタグ列。
+   「幅が広い」は文章で主張しても伝わらない。単語を並べて、量そのもので見せる。
+   flex-wrap ＝ 入りきらなくなったら自動で折り返す。画面幅を選ばない。 */
+.scope{
+  display:flex; flex-wrap:wrap; gap:8px;
+  list-style:none; margin:22px 0 0; padding:0; max-width:760px;
+}
+.scope li{
+  font-size:12.5px; letter-spacing:.02em; color:#54514b;
+  border:1px solid var(--line); border-radius:999px; padding:6px 13px; background:#fff;
+}
+.scope li.more{ border-style:dashed; color:#8b8882; }
+/* 02は黒地の節。白いタグを並べると明るすぎて主役（3枚のカード）を食う。
+   地に沈めて、あくまで「量を見せる添え物」に留める。 */
+.dark .scope li{ background:transparent; border-color:#3a3a40; color:#b4b1ab; }
+.dark .scope li.more{ color:#8b8882; }
+@media(max-width:760px){ .scope li{ font-size:11.5px; padding:5px 11px; } }
+
+/* ============================================================================
+   2. できること（3つ）— 定石より前に出す。
+      「私たちこういうことをやっています」を先に伝えるため。
+   ========================================================================= */
+.sols{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.4vw,28px); }
+@media(max-width:900px){ .sols{ grid-template-columns:1fr; } }
+/* できることは黒帯に置く。カードも暗い面に合わせる */
+.sol{ border:1px solid var(--line-dark); background:#141418; display:flex; flex-direction:column; }
+.sol .shot{ aspect-ratio:16/10; overflow:hidden; position:relative; }
+.sol .shot img{ width:100%; height:100%; object-fit:cover;
+  filter:saturate(.94) contrast(1.03); transition:transform .5s ease; }
+.sol:hover .shot img{ transform:scale(1.04); }
+.sol .body{ padding:22px 22px 26px; display:flex; flex-direction:column; flex:1; }
+.sol h3{ margin:0 0 4px; font-size:20px; font-weight:900; color:#fff; }
+.sol .role{ font-size:11.5px; font-weight:700; letter-spacing:.04em;
+  color:var(--amber-soft); display:block; margin-bottom:14px; }
+.sol ul{ margin:0; padding:0; list-style:none; }
+.sol li{ font-size:13.5px; color:#b4b1ab; padding-left:16px; position:relative; margin-bottom:6px; }
+.sol li::before{ content:""; position:absolute; left:0; top:.75em; width:8px; height:1px; background:var(--amber-soft); }
+
+/* ============================================================================
+   3. 課題 — 新規。ここが無かったので「自分の話」だと思える場所が無かった。
+      抽象語ではなく、実際に起きている症状を具体的に書く。
+   ========================================================================= */
+/* 課題は薄いグレー地のセクションに白カードを並べる。
+   FVが暗い写真なので、直後に黒を置くと境目が消える。明→暗のリズムを保つため。 */
+.pain-lead{
+  font-size:clamp(16px,2.2vw,20px); font-weight:700; margin:0 0 28px;
+  color:var(--ink); line-height:1.7;
+}
+.pains{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); }
+@media(max-width:760px){ .pains{ grid-template-columns:1fr; } }
+.pain{ background:var(--paper); padding:26px 24px 28px; }
+.pain .q{
+  font-size:clamp(16px,2.1vw,19px); font-weight:700; line-height:1.6;
+  margin:0 0 10px; color:var(--ink);
+}
+.pain .q::before{ content:"「"; color:var(--amber); }
+.pain .q::after{ content:"」"; color:var(--amber); }
+.pain p{ margin:0; font-size:13.5px; color:var(--ink-soft); }
+.pain p b{ color:var(--ink); }
+
+/* ============================================================================
+   4. 進め方（適応のサイクル）
+   ========================================================================= */
+.steps{ border-top:1px solid var(--line); }
+.step{
+  display:grid; grid-template-columns:66px 76px 1fr 1.5fr; gap:clamp(10px,2vw,28px);
+  padding:clamp(22px,3vw,32px) 0; border-bottom:1px solid var(--line); align-items:center;
+}
+@media(max-width:760px){
+  /* スマホでは番号とアイコンを横並びにして、下に文章を敷く。
+     ★3列目に 1fr を置くのが肝。
+       これが無いとグリッドの幅が 56px+62px＝118px しかなく、
+       grid-column:1/-1 で全幅にしたつもりの見出しと本文が
+       その118pxに押し込まれて、左端に細長く潰れる（実際そうなっていた）。
+       1fr の余り列を足すことで、グリッドが親の幅いっぱいに広がる。 */
+  .step{ grid-template-columns:auto auto 1fr; gap:10px 14px; align-items:center; }
+  .step > div{ grid-column:1 / -1; }
+  .step > p{ grid-column:1 / -1; }
+}
+/* 工程のアイコン。ブランドのアイコン6種から、意味の合うものを割り当てている */
+.step .ic{
+  /* SVGで描いた線画。色は文字色を継ぐので、暗い面・明るい面のどちらでも成立する。
+     金は差し色として1本だけ。 */
+  width:100%; height:auto; color:var(--ink); display:block;
+}
+/* ★スマホ用の上書きは、必ず基本指定の「後ろ」に置くこと。
+   メディアクエリの中に書いても、あとから同じ強さの .step .ic が来ると負ける。
+   実際それで、スマホでアイコンが画面幅いっぱいまで膨らんだ。 */
+.step .n{
+  font-family:var(--font-display); font-weight:900; font-style:italic;
+  font-size:clamp(34px,4.4vw,54px); line-height:1;
+  /* --line(#e4e1db)だと白地で1.31:1。番号が消えて順序が読み取れない。
+     大きい文字に必要な3:1を超える #949089（3.72:1）にする。 */
+  color:#949089;
+  font-variant-numeric:tabular-nums;
+}
+/* スマホ用の上書き。★必ず基本指定の「後ろ」に置くこと。
+   メディアクエリは詳細度を上げないので、前に置くと同じ強さの基本指定に負ける。 */
+@media(max-width:760px){
+  .step .ic{ width:54px; }
+  .step .n{ font-size:36px; }
+}
+.step h3{ margin:0 0 2px; font-size:clamp(19px,2.4vw,24px); font-weight:900; }
+.step p{ margin:0; font-size:14px; color:var(--ink-soft); }
+.step p b{ color:var(--ink); }
+
+/* ============================================================================
+   5. なぜ効くか（社名の由来 ＋ 3つの原理）
+   ========================================================================= */
+.origin{ text-align:center; margin-bottom:clamp(44px,6vw,70px); }
+.origin img{ width:min(660px,92%); margin:0 auto clamp(18px,2.4vw,26px); }
+/* 体言止めで言い切る一行。ここがこのセクションの結論なので、
+   説明文より一段大きく、金の下線で受ける */
+.origin .punch{
+  color:#fff; font-weight:900; font-size:clamp(22px,3.6vw,40px);
+  line-height:1.35; margin:0 0 16px; letter-spacing:.01em;
+  display:inline-block; border-bottom:3px solid var(--amber-soft); padding-bottom:6px;
+}
+.origin p{ max-width:54ch; margin:0 auto; color:#b4b1ab; font-size:15px; }
+.origin p b{ color:#fff; }
+
+.prin{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,2.6vw,34px); }
+@media(max-width:900px){ .prin{ grid-template-columns:1fr; } }
+.pr{ border-top:2px solid #3a3a40; padding-top:20px; }
+.pr .n{ font-family:var(--font-display); font-weight:900; font-style:italic; font-size:15px; color:var(--amber-soft);
+  letter-spacing:.14em; display:block; margin-bottom:10px; }
+.pr h3{ margin:0 0 2px; font-size:22px; font-weight:900; color:#fff; }
+.pr p{ margin:0; font-size:13.5px; color:#a5a29c; }
+
+/* ============================================================================
+   6. 料金
+   （実績セクションは中身がプレースホルダのみだったため削除。
+     実データが揃ったら、料金の前に戻す想定）
+   ========================================================================= */
+/* 料金は「無料診断」だけを見せる。
+   金額が決まっていないものを空欄で置くより、無いほうが不安を与えない。 */
+.freebox{
+  display:grid; grid-template-columns:minmax(220px,.8fr) 1fr; gap:clamp(20px,3vw,44px);
+  border:1px solid var(--line); background:var(--paper);
+  border-left:4px solid var(--amber); padding:clamp(26px,3.4vw,38px);
+  align-items:center;
+}
+@media(max-width:760px){ .freebox{ grid-template-columns:1fr; gap:20px; } }
+.fb-t{ font-size:11.5px; font-weight:700; letter-spacing:.06em;
+       /* 白地の小さい文字なので、装飾用の --amber ではなく文字用の --amber-ink を使う */
+       color:var(--amber-ink); display:block; margin-bottom:8px; }
+.fb-main h3{ margin:0 0 6px; font-size:20px; font-weight:900; }
+.fb-amount{
+  font-family:var(--font-display); font-weight:900; font-size:clamp(44px,6.4vw,76px);
+  line-height:1; letter-spacing:-.02em; margin:0 0 12px;
+}
+.fb-note{ margin:0; font-size:13.5px; color:var(--ink-soft); }
+.fb-list{ margin:0; padding:0; list-style:none; }
+.fb-list li{ font-size:14.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:9px; }
+/* チェックの代わりに、金の短い横線。既存の箇条書きと同じ語彙で揃える */
+.fb-list li::before{ content:""; position:absolute; left:0; top:.78em;
+  width:12px; height:2px; background:var(--amber); }
+.fb-after{
+  margin:22px 0 0; font-size:14px; color:var(--ink-soft); max-width:64ch;
+}
+.fb-after b{ color:var(--ink); }
+
+/* ============================================================================
+   8. FAQ ／ 9. 問い合わせ
+   ========================================================================= */
+.faq{ border-top:2px solid var(--ink); }
+.faq details{ border-bottom:1px solid var(--line); }
+.faq summary{ cursor:pointer; list-style:none; padding:20px 40px 20px 0;
+  position:relative; font-size:15.5px; font-weight:700; }
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary::after{ content:"＋"; position:absolute; right:4px; top:20px; color:var(--amber); font-weight:700; }
+.faq details[open] summary::after{ content:"−"; }
+.faq summary:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+.faq .ans{ padding:0 0 22px; margin:0; font-size:14px; color:var(--ink-soft); max-width:70ch; }
+
+.privacy-note{
+  margin:4px 0 0; font-size:12.5px; line-height:1.85; color:#b4b1ab;
+}
+.privacy-note a{ color:var(--amber-soft); text-decoration:underline; text-underline-offset:2px; }
+.imgnote{ margin:18px 0 0; font-size:12px; color:#8b8882; }
+.site .row a{ color:inherit; text-decoration:underline; text-underline-offset:2px; }
+.formnote{
+  margin:14px 0 0; font-size:13px; line-height:1.8; color:#b4b1ab; min-height:1.2em;
+}
+.formnote.ok{ color:#e9e7e2; }
+.formnote.ng{ color:#e8b4a0; }
+.form{ display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; max-width:760px; }
+@media(max-width:700px){ .form{ grid-template-columns:1fr; } }
+.form .full{ grid-column:1/-1; }
+.field label{ display:block; font-size:11.5px; font-weight:700;
+  letter-spacing:.08em; color:#8b8882; margin-bottom:7px; }
+.field label .req{ color:var(--amber-soft); }
+.field input,.field textarea{ width:100%; background:#141418; color:#fff;
+  border:1px solid var(--line-dark); padding:13px 14px; font-family:var(--font-body); font-size:15px; }
+.field input:focus,.field textarea:focus{ outline:none; border-color:var(--amber-soft); }
+.field textarea{ min-height:110px; resize:vertical; }
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chips input{ position:absolute; opacity:0; width:0; height:0; }
+.chips label{ margin:0; font-family:var(--font-body); font-size:13px; font-weight:500;
+  color:#d5d3ce; border:1px solid #44444b; padding:8px 15px; cursor:pointer; transition:.15s; letter-spacing:0; }
+.chips input:checked + label{ background:#fff; color:var(--ink); border-color:#fff; font-weight:700; }
+.chips input:focus-visible + label{ outline:2px solid var(--amber-soft); outline-offset:2px; }
+
+.sticky-cta{
+  position:fixed; left:0; right:0; bottom:0; z-index:40;
+  background:var(--ink); border-top:1px solid var(--line-dark);
+  padding:10px var(--gut); display:flex; align-items:center; gap:14px;
+  transform:translateY(110%); opacity:0; visibility:hidden;
+  transition:transform .28s ease, opacity .28s ease, visibility 0s linear .28s;
+}
+.sticky-cta.show{ transform:translateY(0); opacity:1; visibility:visible;
+  transition:transform .28s ease, opacity .28s ease, visibility 0s; }
+.sticky-cta p{ margin:0; font-size:13px; color:#b4b1ab; flex:1; }
+.sticky-cta .btn{ padding:11px 20px; font-size:13.5px; }
+@media(min-width:900px){ .sticky-cta{ display:none; } }
+
+footer.site{ background:var(--ink); color:#8b8882; padding:40px 0 36px; font-size:12.5px;
+  border-top:1px solid var(--line-dark); }
+footer.site .row{ display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; justify-content:space-between; }
+footer.site img{ height:26px; width:auto; }
+
+/* スクロールで現れる。JSが動いたときだけ隠す＝JSが死んでも本文は必ず見える */
+.js .rise{ opacity:0; transform:translateY(22px); transition:opacity .55s ease, transform .55s ease; }
+.js .rise.in{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .swap > span{ animation:none; }
+  .swap > span:nth-child(2){ display:none; }
+  .js .rise{ opacity:1; transform:none; transition:none; }
+  .sol .shot img{ transition:none; }
+  .intro .mark,.intro .line{ animation:none; }
+  .intro{ display:none !important; }
+}
+</style>
+
+<!-- 構造化データ。検索結果に会社情報とFAQが出やすくなる。
+     FAQは本文から機械的に生成しているので、本文を直したらここも作り直すこと。 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://bunchan855.github.io/darwin/#org",
+  "name": "DARWIN",
+  "alternateName": [
+    "D-win",
+    "ダーウィン"
+  ],
+  "url": "https://bunchan855.github.io/darwin/",
+  "logo": "https://bunchan855.github.io/darwin/icon-512.png",
+  "image": "https://bunchan855.github.io/darwin/assets/ogp.jpg",
+  "description": "マーケティング支援事業「DARWIN」。SNS運用、Web制作・広告、内製化支援。",
+  "areaServed": {
+    "@type": "Country",
+    "name": "日本"
+  },
+  "knowsAbout": [
+    "SNS運用代行",
+    "ショート動画制作",
+    "Webサイト制作",
+    "リスティング広告運用",
+    "LINE公式アカウント構築",
+    "データ分析",
+    "マーケティングの内製化支援"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://bunchan855.github.io/darwin/#site",
+  "url": "https://bunchan855.github.io/darwin/",
+  "name": "DARWIN",
+  "inLanguage": "ja",
+  "publisher": {
+    "@id": "https://bunchan855.github.io/darwin/#org"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "DARWIN マーケティング支援",
+  "provider": {
+    "@id": "https://bunchan855.github.io/darwin/#org"
+  },
+  "serviceType": "マーケティング支援",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "3つの頼み方",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "SNS運用（代わりにやる）",
+          "description": "アカウント設計と企画、台本・撮影・編集、投稿と週次の改善。"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Web制作・広告（作る）",
+          "description": "ホームページ・LPの制作、広告の出稿と運用、LINEの受け皿づくり、導線設計。"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "内製化支援（できるようにする）",
+          "description": "運用体制の立ち上げ、手順の型化、担当者の育成、引き継ぎ。"
+        }
+      }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "SNSをまだ始めていない状態でも依頼できますか。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。アカウント設計から立ち上げまでご一緒します。まず事業構造とKGIの棚卸しから始めます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "再生数だけでなく売上まで見てもらえますか。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "そこが本題です。KGIから逆算したKPIツリーを引き、問い合わせや購入までの導線を設計・改善します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "社内で内製化したいのですが対応可能ですか。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "内製化支援がそれにあたります。運用体制ごと立ち上げ、手順を型として社内に残す形で進めます。引き継いで自走できる状態までが範囲です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ホームページや広告だけの相談でも大丈夫ですか。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "大丈夫です。Web制作・広告として、制作から広告運用、LINEの受け皿づくりまで対応します。SNSとセットにする必要はありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "診断だけ受けて、依頼しなくてもいいですか。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "構いません。実際、診断だけで終わるご相談も多いです。その場合も、何をすべきかはお伝えします。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- 扉。既定は display:none で、JSが .on を付けたときだけ出る。
+     JSが動かなければ存在しない＝サイトは普通に表示される。 -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="stage">
+    <!-- 左から引かれる線。ロゴの足元に敷く -->
+    <span class="line"></span>
+    <!-- ロゴ本体。左から右へ形になる（並び順が 猿→人→D→狼 なので進化に見える） -->
+    <img class="mark" src="assets/logo/mark_black.webp" alt="D-win" width="1624" height="830">
+  </div>
+  <button class="skip" id="introSkip" type="button">スキップ</button>
+</div>
+
+<header class="siteheader" id="siteHeader">
+  <div class="wrap row">
+    <a class="logo" href="#hero" aria-label="DARWIN トップへ">
+      <!-- 暗い背景（FV上）では線画の白版、白い帯に切り替わったらカラー版。
+           どちらも「Dマーク＋ダーウィン＋狼」が入った本物のロゴ。 -->
+      <img class="dark-mark" src="assets/logo/mark_white.webp" alt="D-win" width="1624" height="830">
+      <img class="light-mark" src="assets/logo/mark_black.webp" alt="D-win" width="1624" height="830">
+    </a>
+    <nav class="nav">
+      <a href="#pains">こんな課題に</a>
+      <a href="#solutions">できること</a>
+      <a href="#process">進め方</a>
+      <a href="#why">なぜ効くか</a>
+      <a href="#price">料金</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn hdr-cta" href="#contact">まずは無料診断</a>
+  </div>
+</header>
+
+
+<!-- ============ 1. ファーストビュー ============ -->
+<section id="hero">
+  <div class="hero-media" aria-hidden="true">
+    <img src="assets/photo_jp/hero_01.webp" alt="" style="--i:0" fetchpriority="high" width="1920" height="1080">
+    <img data-src="assets/photo_jp/hero_02.webp" alt="" style="--i:1" loading="lazy" decoding="async" width="1920" height="1080">
+    <img data-src="assets/photo_jp/hero_03.webp" alt="" style="--i:2" loading="lazy" decoding="async" width="1920" height="1080">
+    <img data-src="assets/photo_jp/hero_04.webp" alt="" style="--i:3" loading="lazy" decoding="async" width="1600" height="900">
+    <img data-src="assets/photo_jp/hero_05.webp" alt="" style="--i:4" loading="lazy" decoding="async" width="1600" height="900">
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow">DARWIN ／ マーケティング支援事業</p>
+
+    <h1 class="hero-copy">
+      事業の真価を、<span class="swap"><span>進化</span><span aria-hidden="true">深化</span></span>させる。
+    </h1>
+
+    <p class="hero-what">
+      <!-- 日本語は既定だとどこでも改行されるため、「体制づく／りまで」のように
+           語の途中で切れる。意味のまとまりごとに <span> で包むと、
+           その単位でしか改行されなくなる（CSS側で inline-block にしている）。 -->
+      <span><b>SNS運用</b>・<b>Web制作</b>・<b>広告</b>から、</span><span><b>社内で回せる体制づくり</b>まで。</span><br>
+      <span>再生数ではなく、</span><span><b>売上が動くところまで</b>やり切ります。</span>
+    </p>
+
+    <div class="hero-chips">
+      <span>SNS運用・動画制作</span>
+      <span>Web制作・広告運用</span>
+      <span>内製化・体制づくり</span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">まずは無料診断から <span class="ar">→</span></a>
+      <a class="btn btn-ghost" href="#solutions">できることを見る</a>
+    </div>
+
+    <img class="hero-evo" src="assets/brand/evolution_business_white_hi.webp"
+         alt="猿から人、そしてビジネスマンへと進化するシルエット" width="1760" height="1004">
+
+  </div>
+
+</section>
+
+
+<!-- ============ 2. こんな課題に ============ -->
+<section class="light shade slash-both" id="pains">
+  <div class="wrap">
+    <p class="eyebrow rise">課題</p>
+    <h2 class="rise">どれか1つでも当てはまるなら、<br>お役に立てます。</h2>
+    <p class="pain-lead rise">「何が分からないのかも分からない」状態からで構いません。<br>そこを整理するところから始めます。</p>
+
+    <div class="pains">
+      <div class="pain rise">
+        <p class="q">再生数は伸びた。でもお客様が増えない</p>
+        <p>見ている数字が「再生数」で止まっていて、そこから先が設計されていない状態です。どこで離脱しているかを特定し、問い合わせまでの導線を引き直します。</p>
+      </div>
+      <div class="pain rise">
+        <p class="q">ホームページを作りたいが、何から手をつければいいか分からない</p>
+        <p>作る前に決めることが多すぎて止まっている状態です。誰に何を伝えるサイトなのかを先に決めれば、あとは順番どおりに進みます。</p>
+      </div>
+      <div class="pain rise">
+        <p class="q">誰に届ければいいのかが分からない</p>
+        <p>商品は良いのに、届け先が決まっていないと何をやっても薄まります。既存のお客様と数字から、狙うべき相手を絞り込みます。</p>
+      </div>
+      <div class="pain rise">
+        <p class="q">そもそも、自社の売り方が整理できていない</p>
+        <p>ここが一番多いご相談です。<b>事業の形から一緒に分析します。</b>何を強みとして、どこで利益を取るのかを整理するところが出発点になります。</p>
+      </div>
+    </div>
+
+    <div class="cta-end">
+      <div class="txt"><p>現状の数字を見せていただければ、どれに当てはまるかその場でお伝えします。</p><small>オンラインで60分ほど。その場で「どこが詰まっているか」をお伝えします。売り込みはしません。</small></div>
+      <a class="btn btn-primary" href="#contact">まずは無料診断から <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 3. できること ============ -->
+<section class="dark" id="solutions">
+  <div class="wrap">
+    <p class="eyebrow rise">できること</p>
+    <h2 class="rise"><span>頼み方は3つ。</span><span>やれることは、</span><span>ひと通り。</span></h2>
+    <p class="lede rise">
+      <span>企画から撮影、サイト、広告、</span><span>社内の体制づくりまで、</span><span>集客まわりはひと通り</span><span>手を動かします。</span>
+      <span>ただ、頼み方としては</span><span>3つに整理できます。</span><span>「代わりにやる」</span><span>「作る」</span><span>「できるようにする」。</span>
+      <span>1つだけでも、つないでも構いません。</span>
+    </p>
+
+    <ul class="scope rise" aria-label="対応している範囲">
+      <li>アカウント設計</li>
+      <li>企画・構成</li>
+      <li>台本</li>
+      <li>撮影</li>
+      <li>編集</li>
+      <li>投稿代行</li>
+      <li>数値分析</li>
+      <li>ホームページ</li>
+      <li>LP</li>
+      <li>広告運用</li>
+      <li>LINE構築</li>
+      <li>導線設計</li>
+      <li>運用体制づくり</li>
+      <li>担当者の育成</li>
+      <li class="more">ほか</li>
+    </ul>
+
+    <div class="sols">
+      <article class="sol rise">
+        <div class="shot"><img src="assets/photo_jp/d01_shooting.webp" alt="撮影の現場" width="1280" height="800"></div>
+        <div class="body">
+          <h3>SNS運用</h3>
+          <span class="role">代わりにやる</span>
+          <ul>
+            <li>アカウント設計と企画</li>
+            <li>台本・撮影・編集</li>
+            <li>投稿と週次の改善</li>
+            <li>ショート動画が主軸</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="sol rise">
+        <div class="shot"><img src="assets/photo_jp/d02_analytics.webp" alt="数字を確認する場面" width="1280" height="800"></div>
+        <div class="body">
+          <h3>Web制作・広告</h3>
+          <span class="role">作る</span>
+          <ul>
+            <li>ホームページ・LPの制作</li>
+            <li>広告の出稿と運用</li>
+            <li>LINEの受け皿づくり</li>
+            <li>問い合わせまでの導線設計</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="sol rise">
+        <div class="shot"><img src="assets/photo_jp/d03_training.webp" alt="社内で進め方を共有する場面" width="1280" height="800"></div>
+        <div class="body">
+          <h3>内製化支援</h3>
+          <span class="role">できるようにする</span>
+          <ul>
+            <li>運用体制の立ち上げ</li>
+            <li>手順を型にして社内に残す</li>
+            <li>担当者の育成</li>
+            <li>引き継いで自走させる</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <p class="imgnote">写真はイメージです。</p>
+
+    <div class="cta-end">
+      <div class="txt"><p>どれが自社に効くか分からない場合も、診断でお伝えします。</p><small>オンラインで60分ほど。その場で「どこが詰まっているか」をお伝えします。売り込みはしません。</small></div>
+      <a class="btn btn-primary" href="#contact">まずは無料診断から <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 4. 進め方 ============ -->
+<section class="light" id="process">
+  <div class="wrap">
+    <p class="eyebrow rise">進め方</p>
+    <h2 class="rise">4つのフェーズで進めます。</h2>
+    <p class="lede rise">
+      3つのどれを選んでも、進め方は同じです。診断だけで終わっても構いません。
+    </p>
+
+    <div class="steps">
+      <div class="step rise">
+        <span class="n">01</span>
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="21" cy="21" r="13" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M31 31l10 10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M14 21h4l2.5-5 3 10 2.5-5h2.5" stroke="var(--amber)" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        <div><h3>診断</h3></div>
+        <p>事業構造・KGI・既存アカウントを棚卸しし、どこで詰まっているかを特定します。<b>ここまでは無料です。</b></p>
+      </div>
+      <div class="step rise">
+        <span class="n">02</span>
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="6" y="8" width="36" height="32" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M6 18h36M18 18v22" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M25 25h10M25 31h6" stroke="var(--amber)" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+        <div><h3>設計</h3></div>
+        <p>KGIから逆算したKPIツリーと、コンテンツ・導線の設計図をつくります。毎週どの数字を見るかも、ここで決めます。</p>
+      </div>
+      <div class="step rise">
+        <span class="n">03</span>
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="5" y="11" width="30" height="26" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M35 21l8-5v16l-8-5z" stroke="var(--amber)" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M16 19l8 5-8 5z" fill="currentColor"/>
+      </svg>
+        <div><h3>実装</h3></div>
+        <p>企画・撮影・編集・投稿、またはサイト制作と広告出稿。運用体制ごと立ち上げて初速を取りにいきます。</p>
+      </div>
+      <div class="step rise">
+        <span class="n">04</span>
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M6 40V8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M6 40h36" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M12 32l8-7 7 5 12-13" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M31 17h8v8" stroke="var(--amber)" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        <div><h3>適応</h3></div>
+        <p>週次で数値を読み、伸びた理由を型にして次へ。ここで残した型が、そのまま内製化の資産になります。</p>
+      </div>
+    </div>
+
+    <div class="cta-end">
+      <div class="txt"><p>まずは診断だけ、というご依頼が一番多いです。</p><small>オンラインで60分ほど。その場で「どこが詰まっているか」をお伝えします。売り込みはしません。</small></div>
+      <a class="btn btn-primary" href="#contact">まずは無料診断から <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 5. なぜ効くか ============ -->
+<section class="dark slash-top" id="why">
+  <div class="wrap">
+    <p class="eyebrow rise">なぜ効くのか</p>
+    <h2 class="rise">一番強い種ではなく、<br>一番よく適応した種が残る。</h2>
+
+    <div class="origin rise">
+      <img src="assets/brand/evolution_business_white_hi.webp"
+           alt="猿から人、そしてビジネスマンへと進化するシルエット" width="1760" height="1004">
+      <p class="punch">やり方を更新し続ける仕組み。</p>
+      <p>
+        市場が変わり続ける以上、勝ち筋も変わり続けます。
+        だから納品するのは「今回うまくいったやり方」ではありません。
+        社名の由来もここにあります。
+      </p>
+    </div>
+
+    <div class="prin">
+      <div class="pr rise">
+        <span class="n">01</span>
+        <h3>変異</h3>
+        <p>業種も商材も詰まる場所も、同じものは1つもありません。積み上げた型を事業ごとに組み替え、その課題にだけ効く打ち手に変えます。</p>
+      </div>
+      <div class="pr rise">
+        <span class="n">02</span>
+        <h3>増殖</h3>
+        <p>1本のバズは運でも起きます。設計するのは、伸びた理由を分解して次に再現する仕組みのほうです。</p>
+      </div>
+      <div class="pr rise">
+        <span class="n">03</span>
+        <h3>選択</h3>
+        <p>再生数の先にあるのは売上と利益です。認知・興味・比較・行動のどこで落ちているかを特定し、数字が動く場所まで運びます。</p>
+      </div>
+    </div>
+
+    <div class="cta-end">
+      <div class="txt"><p>この考え方が自社に合うかどうかも、診断の場でお話しします。</p><small>オンラインで60分ほど。その場で「どこが詰まっているか」をお伝えします。売り込みはしません。</small></div>
+      <a class="btn btn-primary" href="#contact">まずは無料診断から <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 6. 料金の目安 ============ -->
+<section class="light shade" id="price">
+  <div class="wrap">
+    <p class="eyebrow rise">料金</p>
+    <h2 class="rise">診断は無料です。</h2>
+    <p class="lede rise">
+      いきなり契約の話はしません。まず現状を見て、何をすべきかをお伝えするところまでが無料です。
+    </p>
+
+    <div class="freebox">
+      <div class="fb-main">
+        <span class="fb-t">最初の一歩</span>
+        <h3>現状診断</h3>
+        <p class="fb-amount">無料</p>
+        <p class="fb-note">オンラインで60分ほど。相談だけで終わっても構いません。</p>
+      </div>
+      <ul class="fb-list">
+        <li>アカウントと数字を拝見します</li>
+        <li>どこで詰まっているかをお伝えします</li>
+        <li>最初に打つべき手をお伝えします</li>
+        <li>その場で売り込むことはしません</li>
+      </ul>
+    </div>
+
+    <p class="fb-after">
+      その先の設計・実装の費用は、内容と体制によって変わります。
+      <b>診断のあとに、必要な範囲だけをお見積りします。</b>
+    </p>
+
+    <div class="cta-end">
+      <div class="txt"><p>金額の話をする前に、まず現状を見せてください。</p><small>オンラインで60分ほど。その場で「どこが詰まっているか」をお伝えします。売り込みはしません。</small></div>
+      <a class="btn btn-primary" href="#contact">まずは無料診断から <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 7. FAQ ============ -->
+<section class="light" id="faq">
+  <div class="wrap">
+    <p class="eyebrow rise">よくある質問</p>
+    <h2 class="rise">よくあるご質問</h2>
+
+    <div class="faq rise">
+      <details open>
+        <summary>SNSをまだ始めていない状態でも依頼できますか。</summary>
+        <p class="ans">はい。アカウント設計から立ち上げまでご一緒します。まず事業構造とKGIの棚卸しから始めます。</p>
+      </details>
+      <details>
+        <summary>再生数だけでなく売上まで見てもらえますか。</summary>
+        <p class="ans">そこが本題です。KGIから逆算したKPIツリーを引き、問い合わせや購入までの導線を設計・改善します。</p>
+      </details>
+      <details>
+        <summary>社内で内製化したいのですが対応可能ですか。</summary>
+        <p class="ans">内製化支援がそれにあたります。運用体制ごと立ち上げ、手順を型として社内に残す形で進めます。引き継いで自走できる状態までが範囲です。</p>
+      </details>
+      <details>
+        <summary>ホームページや広告だけの相談でも大丈夫ですか。</summary>
+        <p class="ans">大丈夫です。Web制作・広告として、制作から広告運用、LINEの受け皿づくりまで対応します。SNSとセットにする必要はありません。</p>
+      </details>
+      <details>
+        <summary>診断だけ受けて、依頼しなくてもいいですか。</summary>
+        <p class="ans">構いません。実際、診断だけで終わるご相談も多いです。その場合も、何をすべきかはお伝えします。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 8. お問い合わせ ============ -->
+<section class="dark slash-top" id="contact">
+  <div class="wrap">
+    <p class="eyebrow rise">お問い合わせ</p>
+    <h2 class="rise"><span>詰まっている場所を、</span><span>まず知る。</span></h2>
+    <p class="lede rise">
+      現状のアカウントと事業の数字を見せていただければ、詰まっている場所と最初に打つべき手をその場でお伝えします。
+      相談だけでも構いません。
+    </p>
+
+    <!-- ★送信先の設定はこの action 1箇所だけ。
+     Formspree なら https://formspree.io/f/xxxxxxxx のようなURLを入れる。
+     JSが動く環境ではページを移動せずに送信し、
+     JSが動かない環境でも普通のフォーム送信として動く（＝どちらでも届く）。
+     空のままだと、JSがメールソフトを開く動きに切り替わる。 -->
+<form class="form rise" id="contactForm" action="" method="post">
+      <div class="field"><label for="f-name">お名前 <span class="req">*</span></label>
+        <input id="f-name" name="name" type="text" required autocomplete="name"></div>
+      <div class="field"><label for="f-company">会社名</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization"></div>
+      <div class="field full"><label for="f-mail">メールアドレス <span class="req">*</span></label>
+        <input id="f-mail" name="email" type="email" required autocomplete="email"></div>
+      <div class="field full"><label>ご相談内容</label>
+        <div class="chips">
+          <input type="radio" id="c1" name="topic" value="sns" checked><label for="c1">SNS運用</label>
+          <input type="radio" id="c2" name="topic" value="web"><label for="c2">Web・広告</label>
+          <input type="radio" id="c3" name="topic" value="growth"><label for="c3">内製化</label>
+          <input type="radio" id="c4" name="topic" value="unknown"><label for="c4">何が必要か分からない</label>
+        </div></div>
+      <div class="field full"><label for="f-body">詳細（任意）</label>
+        <textarea id="f-body" name="message" placeholder="アカウントのURL、現在の課題など"></textarea></div>
+      <!-- JavaScriptが無効な環境向けの案内。
+           action が未設定のままだと送信できないので、メールの経路を必ず見せる。 -->
+      <noscript><p class="formnote full">お使いの環境ではフォームの送信確認が表示されません。
+        <a href="mailto:contact@d-win.co.jp">contact@d-win.co.jp</a> まで直接ご連絡いただいても構いません。</p></noscript>
+      <p class="privacy-note full">
+        ご入力いただいた情報は、お問い合わせへの回答および関連するご連絡にのみ利用します。
+        詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。
+      </p>
+      <div class="full">
+        <button class="btn btn-primary" type="submit">送信する <span class="ar">→</span></button>
+        <!-- 送信の結果をここに出す。role="status" を付けると読み上げソフトにも伝わる -->
+        <p class="formnote" id="formNote" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div class="specbar" style="margin-top:36px">
+      <span>MAIL <a href="mailto:contact@d-win.co.jp"><b>contact@d-win.co.jp</b></a></span>
+      <span>返信 <b>1営業日以内</b></span>
+      <span>診断 <b>無料・60分程度</b></span>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site">
+  <div class="wrap row">
+    <img src="assets/logo/mark_white.webp" alt="D-win" width="1624" height="830">
+    <span>DARWIN — マーケティング支援事業</span>
+    <span><a href="privacy.html">プライバシーポリシー</a></span>
+    <span>© 2026 D-win</span>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <p>診断は無料。売り込みはしません。</p>
+  <a class="btn btn-primary" href="#contact">無料診断へ <span class="ar">→</span></a>
+</div>
+
+<script>
+/* ============================================================================
+   マウス追従のモーション。
+   画面中央を0として -1〜1 の値を CSS変数（--mx / --my）に入れるだけ。
+   実際の動かし方はCSS側に任せる（JSでスタイルを直接いじらない）。
+
+   ・mousemove は大量に発火するので、時刻ベースで間引く
+   ・タッチ端末では動かさない（hover が無いので意味が無く、負荷だけ増える）
+   ・動きを減らす設定なら何もしない
+   ============================================================================ */
+(function(){
+  var fine = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!fine || reduce) return;
+
+  var hero = document.getElementById('hero');
+  var last = 0;
+
+  window.addEventListener('mousemove', function(e){
+    var now = Date.now();
+    if (now - last < 40) return;      // 1秒あたり最大25回まで
+    last = now;
+    // 画面中央からのずれを -1〜1 に正規化する
+    var mx = (e.clientX / window.innerWidth  - .5) * 2;
+    var my = (e.clientY / window.innerHeight - .5) * 2;
+    if (hero) { hero.style.setProperty('--mx', mx.toFixed(3));
+                hero.style.setProperty('--my', my.toFixed(3)); }
+  }, { passive:true });
+
+  // カードは、そのカードの中でのカーソル位置を渡す（傾ける向きを決めるため）
+  [].forEach.call(document.querySelectorAll('.sol'), function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--cx', (((e.clientX - r.left) / r.width  - .5) * 2).toFixed(3));
+      card.style.setProperty('--cy', (((e.clientY - r.top ) / r.height - .5) * 2).toFixed(3));
+    }, { passive:true });
+    card.addEventListener('mouseleave', function(){
+      card.style.setProperty('--cx', 0); card.style.setProperty('--cy', 0);
+    });
+  });
+})();
+
+/* ============================================================================
+   扉（イントロ）の制御。
+   「必ず閉じる」ことを最優先に組んである。
+   ・動画の再生完了は待たない（タイマーで閉じる）
+   ・クリック／キー／SKIPでも閉じる
+   ・1セッション1回だけ
+   ========================================================================= */
+(function(){
+  var intro = document.getElementById('intro');
+  if (!intro) return;
+
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen;
+  try { seen = sessionStorage.getItem('darwin_intro') === '1'; } catch(e){ seen = false; }
+
+  // 2回目以降、動きを減らす設定、の場合は扉を出さない
+  if (seen || reduce) return;
+
+  var closed = false;
+  function close(){
+    if (closed) return;
+    closed = true;
+    intro.style.display = 'none';
+    root.classList.remove('intro-pending');
+    root.classList.add('intro-done');
+    try { sessionStorage.setItem('darwin_intro','1'); } catch(e){}
+    document.removeEventListener('keydown', close);
+    intro.removeEventListener('click', close);
+  }
+
+  root.classList.add('intro-pending');
+  intro.classList.add('on');
+  intro.setAttribute('aria-hidden','false');
+
+  // ★これが命綱。動画が読めなくても3.4秒で必ず開く
+  setTimeout(close, 4050);
+
+  document.getElementById('introSkip').addEventListener('click', function(e){ e.stopPropagation(); close(); });
+  intro.addEventListener('click', close);
+  document.addEventListener('keydown', close);
+})();
+
+/* ============================================================================
+   ヘッダーの見た目切り替え／追従CTA／スクロールで現れる要素。
+
+   判定はすべて getBoundingClientRect から同期的に計算する。
+   requestAnimationFrame は使わない（描画が止まると発火せず、
+   「機能が黙って消える」＝このLPが最初に踏んだ地雷と同じ形になるため）。
+   ========================================================================= */
+(function(){
+  /* ★'js' クラスはここでは付けない。
+     .js .rise{opacity:0} は付いた瞬間に効くので、
+     「隠す」より先に「出す準備が最後まで通った」ことを確かめる必要がある。
+     付けるのは、この関数の最後（judge() が1回通ったあと）。 */
+
+  var header  = document.getElementById('siteHeader');
+  var cta     = document.getElementById('stickyCta');
+  var hero    = document.getElementById('hero');
+  var contact = document.getElementById('contact');
+  var risers  = [].slice.call(document.querySelectorAll('.rise'));
+
+  function onScreen(el, margin){
+    var r = el.getBoundingClientRect();
+    return r.bottom > 0 && r.top < (window.innerHeight - (margin || 0));
+  }
+
+  function judge(){
+    // FVの上にいる間はヘッダーを透明のまま（暗い写真の上に白ロゴ）。
+    // 白いセクションに入ったら白帯に切り替える。
+    var overHero = hero.getBoundingClientRect().bottom > 66;
+    header.classList.toggle('solid', !overHero);
+
+    var show = !onScreen(hero, 0) && !onScreen(contact, 0);
+    cta.classList.toggle('show', show);
+    cta.setAttribute('aria-hidden', show ? 'false' : 'true');
+
+    for (var i = risers.length - 1; i >= 0; i--){
+      if (onScreen(risers[i], 70)){ risers[i].classList.add('in'); risers.splice(i,1); }
+    }
+  }
+
+  // 時刻ベースの間引き。80msに1回まで、止まったあと120msで最終判定
+  var last = 0, timer = null;
+  function request(){
+    var now = Date.now();
+    if (now - last >= 80){ last = now; judge(); }
+    clearTimeout(timer);
+    timer = setTimeout(function(){ last = Date.now(); judge(); }, 120);
+  }
+
+  window.addEventListener('scroll', request, { passive:true });
+  window.addEventListener('resize', request, { passive:true });
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(request, { threshold:0 });
+    io.observe(hero); io.observe(contact);
+  }
+  /* ここまで一度も落ちずに来たときだけ、隠す仕掛けを有効にする。
+     判定を1回走らせてから付けるので、「隠したのに出す処理が動かない」が起きない。 */
+  judge();
+  document.documentElement.classList.add('js');
+  judge();                                   // js を付けた直後にもう一度。初回表示ぶんを出す
+  window.addEventListener('load', request);
+})();
+
+/* ============================================================================
+   FV背景の2枚目以降を、ページの読み込みが終わってから取りにいく。
+
+   最初から5枚ぶんのURLを書いておくと、全部が画面の中にあるため
+   ブラウザは1.4MBを一度に落としにいき、最初の表示が遅くなる。
+   1枚目だけ先に見せ、残りは手が空いてから読む。
+   ========================================================================= */
+(function(){
+  function load(){
+    var media = document.querySelector('.hero-media');
+    if (!media) return;
+    var rest = media.querySelectorAll('img[data-src]');
+    var left = rest.length;
+    if (!left){ media.classList.add('ready'); return; }
+    for (var i = 0; i < rest.length; i++){
+      (function(img){
+        // 読み終わった／失敗した、どちらでも数を減らす。
+        // 1枚でも失敗したまま待ち続けると、スライドショーが永久に始まらない。
+        function done(){ if (--left === 0) media.classList.add('ready'); }
+        img.addEventListener('load', done);
+        img.addEventListener('error', done);
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      })(rest[i]);
+    }
+    // 何かで load も error も来なかったときのために、8秒で打ち切って動かす
+    setTimeout(function(){ media.classList.add('ready'); }, 8000);
+  }
+  if (document.readyState === 'complete') load();
+  else window.addEventListener('load', load);
+})();
+
+/* ============================================================================
+   最後の保険。
+   上の処理がどこかで落ちても、3秒後に .rise を全部表示状態にする。
+   本文が読めないより、動きが無いほうが100倍ましなので、必ず表示側に倒す。
+   ========================================================================= */
+setTimeout(function(){
+  var es = document.querySelectorAll('.rise');
+  for (var i = 0; i < es.length; i++){ es[i].classList.add('in'); }
+}, 3000);
+</script>
+<script>
+/* ============================================================================
+   問い合わせフォームの送信
+
+   ★ここだけ直せば送信先が変わる ↓
+   ENDPOINT にフォーム受付サービス（Formspree など）のURLを入れると、
+   そこへ送信するようになる。空のままなら、下の「メールで送る」に切り替わる。
+
+   【空のまま公開してはいけない理由】
+     action="" のままだと、送信ボタンを押してもページが再読み込みされるだけで、
+     入力内容は消え、こちらには何も届かない。
+     問い合わせが来ない上に、来なかったことにも気づけない。いちばん危ない壊れ方。
+
+   【つなぐまでの間の動き】
+     ENDPOINT が空のときは、入力内容を件名・本文に組み立てて
+     メールソフトを開く（mailto）。届く経路が必ず1本あるようにしておく。
+   ========================================================================= */
+(function(){
+  var MAILTO = 'contact@d-win.co.jp';   // ← 実際に受け取れるアドレスに変えること
+
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  // 送信先は form の action から読む。設定箇所を1つにしておくため。
+  var ENDPOINT = (form.getAttribute('action') || '').trim();
+  form.setAttribute('novalidate','');   // JSが動いたときだけ、こちらで入力を見る
+  var note = document.getElementById('formNote');
+  function say(msg, cls){ if(!note) return; note.textContent = msg; note.className = 'formnote ' + (cls||''); }
+
+  var TOPICS = { sns:'SNS運用', web:'Web・広告', growth:'内製化', unknown:'何が必要か分からない' };
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // 入力チェックは自分で行う（novalidate を付けたので、ブラウザ任せにしない）
+    // 注意: form.name は「name属性の値」を返す仕様なので、入力欄は必ず id で取る
+    var name = (form.querySelector('#f-name').value || '').trim();
+    var mail = (form.querySelector('#f-mail').value || '').trim();
+    if (!name){ say('お名前を入力してください。', 'ng'); form.querySelector('#f-name').focus(); return; }
+    // 「@ があって、その後ろに . がある」程度の緩い判定。
+    // 厳密な正規表現は正しいアドレスを弾くことがあるので、あえて緩くする。
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){
+      say('メールアドレスの形式を確認してください。', 'ng'); form.querySelector('#f-mail').focus(); return;
+    }
+
+    var company = (form.querySelector('#f-company').value || '').trim();
+    var body    = (form.querySelector('#f-body').value || '').trim();
+    var topicEl = form.querySelector('input[name="topic"]:checked');
+    var topic   = topicEl ? (TOPICS[topicEl.value] || topicEl.value) : '';
+
+    if (ENDPOINT){
+      say('送信しています…');
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      }).then(function(r){
+        if (r.ok){ form.reset(); say('送信しました。2営業日以内にご返信します。', 'ok'); }
+        else { throw new Error('status ' + r.status); }
+      }).catch(function(){
+        say('送信できませんでした。お手数ですが ' + MAILTO + ' 宛にメールでご連絡ください。', 'ng');
+      });
+      return;
+    }
+
+    // 送信先が未設定のとき：メールソフトを開く
+    var lines = [
+      'お名前: ' + name,
+      '会社名: ' + (company || '（未記入）'),
+      'メール: ' + mail,
+      'ご相談: ' + topic,
+      '',
+      body || '（詳細の記入なし）'
+    ].join('\n');
+    say('メールソフトが開きます。そのまま送信してください。');
+    window.location.href = 'mailto:' + MAILTO
+      + '?subject=' + encodeURIComponent('【お問い合わせ】' + name + ' 様')
+      + '&body='    + encodeURIComponent(lines);
+  });
+})();
+</script>
+</body>
+</html>

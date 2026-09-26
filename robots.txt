@@ -1,0 +1,6 @@
+# 検索エンジンへの指示。全部読んでよい、という意味。
+User-agent: *
+Allow: /
+
+# ページの一覧はここにある、と教える
+Sitemap: https://bunchan855.github.io/darwin/sitemap.xml
