@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # ページの一覧はここにある、と教える
-Sitemap: https://bunchan855.github.io/darwin/sitemap.xml
+Sitemap: https://darwin-marketing.netlify.app/sitemap.xml
