@@ -632,6 +632,10 @@ h2, h3, .lede, .cta-end .txt p, .faq summary, .pain .q, .hero-what, .fb-main h3{
 .faq summary:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
 .faq .ans{ padding:0 0 22px; margin:0; font-size:14px; color:var(--ink-soft); max-width:70ch; }
 
+/* 迷惑投稿よけの欄。人には見せないが、機械には見える状態にしておく。
+   display:none で消すとブラウザによっては送信されず、判定に使えなくなるため、
+   画面の外へ押し出す形で隠す。 */
+.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 .privacy-note{
   margin:4px 0 0; font-size:12.5px; line-height:1.85; color:#b4b1ab;
 }
@@ -1210,12 +1214,21 @@ footer.site img{ height:26px; width:auto; }
       相談だけでも構いません。
     </p>
 
-    <!-- ★送信先の設定はこの action 1箇所だけ。
-     Formspree なら https://formspree.io/f/xxxxxxxx のようなURLを入れる。
-     JSが動く環境ではページを移動せずに送信し、
-     JSが動かない環境でも普通のフォーム送信として動く（＝どちらでも届く）。
-     空のままだと、JSがメールソフトを開く動きに切り替わる。 -->
-<form class="form rise" id="contactForm" action="" method="post">
+    <!-- Netlify のフォーム受信機能を使う。
+         ・data-netlify="true"  … デプロイ時にNetlifyがこのフォームを見つけて受信先を用意する
+         ・name="contact"       … 管理画面での名前。送信時にどのフォームか識別するのにも使う
+         ・data-netlify-honeypot … 迷惑投稿よけ。人には見えない欄を1つ置き、
+                                   そこに入力があったもの＝機械とみなして捨てる。
+                                   画像の文字を読ませる認証と違い、訪問者に負担がかからない。
+         ・action="/"           … JavaScriptが動かない環境では、ここへ普通に送信される。
+                                   NetlifyがPOSTを受け取り、完了画面を出す。 -->
+<form class="form rise" id="contactForm" name="contact" method="POST"
+      action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+      <!-- どのフォームからの送信かをNetlifyに伝える印。JSで送るときにも必要 -->
+      <input type="hidden" name="form-name" value="contact">
+      <!-- 迷惑投稿よけの空欄。人の目にもスクリーンリーダーにも触れないようにしてある -->
+      <p class="hp" aria-hidden="true"><label>この欄は入力しないでください
+        <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="field"><label for="f-name">お名前 <span class="req">*</span></label>
         <input id="f-name" name="name" type="text" required autocomplete="name"></div>
       <div class="field"><label for="f-company">会社名</label>
@@ -1233,8 +1246,8 @@ footer.site img{ height:26px; width:auto; }
         <textarea id="f-body" name="message" placeholder="アカウントのURL、現在の課題など"></textarea></div>
       <!-- JavaScriptが無効な環境向けの案内。
            action が未設定のままだと送信できないので、メールの経路を必ず見せる。 -->
-      <noscript><p class="formnote full">お使いの環境ではフォームの送信確認が表示されません。
-        <a href="mailto:info@d-win.jp">info@d-win.jp</a> まで直接ご連絡いただいても構いません。</p></noscript>
+      <noscript><p class="formnote full">送信するとページが切り替わります。
+        <a href="mailto:info@d-win.jp">info@d-win.jp</a> 宛のメールでも構いません。</p></noscript>
       <p class="privacy-note full">
         ご入力いただいた情報は、お問い合わせへの回答および関連するご連絡にのみ利用します。
         詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。
@@ -1462,79 +1475,59 @@ setTimeout(function(){
 /* ============================================================================
    問い合わせフォームの送信
 
-   ★ここだけ直せば送信先が変わる ↓
-   ENDPOINT にフォーム受付サービス（Formspree など）のURLを入れると、
-   そこへ送信するようになる。空のままなら、下の「メールで送る」に切り替わる。
+   【仕組み】
+     Netlify のフォーム受信機能に向けて送る。
+     このサイトはNetlifyで動いているので、別のサービスを契約する必要がない。
+     送信された内容は Netlify の管理画面に溜まり、同時に info@d-win.jp へ通知が飛ぶ。
 
-   【空のまま公開してはいけない理由】
-     action="" のままだと、送信ボタンを押してもページが再読み込みされるだけで、
-     入力内容は消え、こちらには何も届かない。
-     問い合わせが来ない上に、来なかったことにも気づけない。いちばん危ない壊れ方。
+   【JavaScriptが動かないとき】
+     <form> の action="/" が効いて、普通のフォーム送信としてNetlifyに届く。
+     ページは移動するが、届かないことはない。
 
-   【つなぐまでの間の動き】
-     ENDPOINT が空のときは、入力内容を件名・本文に組み立てて
-     メールソフトを開く（mailto）。届く経路が必ず1本あるようにしておく。
+   【なぜ以前の「メールソフトが開く」方式をやめたか】
+     訪問者にひと手間かかるうえ、メールソフトが設定されていない端末では
+     何も起こらず、問い合わせが取りこぼされる。
    ========================================================================= */
 (function(){
-  var MAILTO = 'info@d-win.jp';   // ← 実際に受け取れるアドレスに変えること
-
   var form = document.getElementById('contactForm');
   if (!form) return;
-  // 送信先は form の action から読む。設定箇所を1つにしておくため。
-  var ENDPOINT = (form.getAttribute('action') || '').trim();
-  form.setAttribute('novalidate','');   // JSが動いたときだけ、こちらで入力を見る
+  form.setAttribute('novalidate','');   // JSが動くときは、こちらで入力を見る
   var note = document.getElementById('formNote');
   function say(msg, cls){ if(!note) return; note.textContent = msg; note.className = 'formnote ' + (cls||''); }
 
-  var TOPICS = { sns:'SNS運用', web:'Web・広告', growth:'内製化', unknown:'何が必要か分からない' };
+  var btn = form.querySelector('button[type=submit]');
+  var btnHTML = btn ? btn.innerHTML : '';
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    // 入力チェックは自分で行う（novalidate を付けたので、ブラウザ任せにしない）
-    // 注意: form.name は「name属性の値」を返す仕様なので、入力欄は必ず id で取る
     var name = (form.querySelector('#f-name').value || '').trim();
     var mail = (form.querySelector('#f-mail').value || '').trim();
     if (!name){ say('お名前を入力してください。', 'ng'); form.querySelector('#f-name').focus(); return; }
     // 「@ があって、その後ろに . がある」程度の緩い判定。
-    // 厳密な正規表現は正しいアドレスを弾くことがあるので、あえて緩くする。
+    // 厳密な正規表現は正しいアドレスまで弾くことがあるので、あえて緩くする。
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){
       say('メールアドレスの形式を確認してください。', 'ng'); form.querySelector('#f-mail').focus(); return;
     }
 
-    var company = (form.querySelector('#f-company').value || '').trim();
-    var body    = (form.querySelector('#f-body').value || '').trim();
-    var topicEl = form.querySelector('input[name="topic"]:checked');
-    var topic   = topicEl ? (TOPICS[topicEl.value] || topicEl.value) : '';
+    if (btn){ btn.disabled = true; btn.textContent = '送信中…'; }
+    say('送信しています…');
 
-    if (ENDPOINT){
-      say('送信しています…');
-      fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      }).then(function(r){
-        if (r.ok){ form.reset(); say('送信しました。2営業日以内にご返信します。', 'ok'); }
-        else { throw new Error('status ' + r.status); }
-      }).catch(function(){
-        say('送信できませんでした。お手数ですが ' + MAILTO + ' 宛にメールでご連絡ください。', 'ng');
-      });
-      return;
-    }
-
-    // 送信先が未設定のとき：メールソフトを開く
-    var lines = [
-      'お名前: ' + name,
-      '会社名: ' + (company || '（未記入）'),
-      'メール: ' + mail,
-      'ご相談: ' + topic,
-      '',
-      body || '（詳細の記入なし）'
-    ].join('\n');
-    say('メールソフトが開きます。そのまま送信してください。');
-    window.location.href = 'mailto:' + MAILTO
-      + '?subject=' + encodeURIComponent('【お問い合わせ】' + name + ' 様')
-      + '&body='    + encodeURIComponent(lines);
+    // FormData を「名前=値&名前=値」の形に変換して送る。
+    // Netlify はこの形式（フォームの標準的な送り方）を受け取る。
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(r){
+      if (!r.ok) throw new Error('status ' + r.status);
+      form.reset();
+      say('送信しました。2営業日以内にご返信します。', 'ok');
+    }).catch(function(){
+      say('送信できませんでした。お手数ですが info@d-win.jp 宛にメールでご連絡ください。', 'ng');
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = btnHTML; }
+    });
   });
 })();
 </script>
